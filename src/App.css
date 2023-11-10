@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700|Roboto:400,400i,700&display=swap");
+
+@keyframes gradientBackground {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #383838;
+  background-image: linear-gradient(45deg, #020024, #090979, #00d4ff, #ff2b2b);
+  background-size: 150% 150%;
+  animation: gradientBackground 15s ease infinite;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  display: inline-block;
+  position: relative;
+}
+
+h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  display: inline-block;
+  position: relative;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+button {
+  background-color: #28a745;
+  color: #343a40;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+  margin: 20px 0;
+}
+
+button:hover {
+  background-color: #5348c6;
+}
+
+.graph-container {
+  height: 50vh;
+  position: relative;
+  border: 1px solid #e1e4e8;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 90%;
+  }
+}
+.card {
+  color: #343a40;
+  border-radius: 25px;
+  padding: 20px;
+}
+
+.modern-button {
+  background-color: #4caf50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.modern-button:hover {
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.modern-button:active {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transform: translateY(0);
+}
+
+.modern-button:disabled {
+  background: rgba(2, 16, 36, 0.25);
+  box-shadow: none;
+  transform: none;
+}
+
+.graph-container {
+  height: 500px;
+  width: 100%;
+  border-radius: 20px;
+  padding: 30px;
+  box-sizing: border-box;
+  border: none; /* Adjust this to a darker shade close to the background for subtle contrast */
+  box-shadow: 0 4px 6px rgba(44, 62, 80, 0.1);
+  transition: transform 0.3s ease-in-out;
+}
+
+.graph-container:hover {
+  transform: scale(1.03); /* Slightly zooms in */
+  box-shadow:
+    0 8px 16px 0 rgba(0, 0, 0, 0.2),
+    0 12px 40px 0 rgba(0, 0, 0, 0.2); /* Larger shadow for raised effect */
+}
+
+.graph-container + .modern-button {
+  margin-top: 40px; /* Increase the top margin */
+}

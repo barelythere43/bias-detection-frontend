@@ -1,0 +1,44 @@
+/* GraphPage.css */
+
+/* Soften gridlines */
+.chart-grid line {
+    stroke: rgba(255, 255, 255, 0.1); /* Lighten the grid lines for a subtle look */
+}
+
+/* Add rounded corners to chart elements */
+.chart-area {
+    border-radius: 4px; /* Adjust as necessary */
+}
+
+/* Style for buttons */
+.button-rounded {
+    border: none;
+    border-radius: 20px; /* Rounded corners for a modern look */
+    padding: 10px 20px;
+    background-color: #005f73; /* Replace with your brand color */
+    color: white;
+    font-size: 16px;
+    font-family: 'Helvetica, Arial, sans-serif';
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.button-rounded:hover {
+    background-color: #0a9396; /* Slightly lighter brand color for hover effect */
+}
+
+/* Ensure the chart container is responsive and well-spaced */
+.chart-container {
+    padding: 20px;
+    background: #fdfdfd; /* Light background to ensure the chart stands out */
+    border-radius: 4px; /* Consistency in rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Title styling */
+.chart-title {
+    font-size: 24px;
+    color: #333; /* Dark color for contrast */
+    text-align: center;
+    margin-bottom: 20px; /* Spacing below the title */
+}

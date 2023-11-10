@@ -1,0 +1,159 @@
+.article-label {
+  color: #a8d8e5;
+  margin-left: 10px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  flex-direction: column;
+  align-items: center;
+}
+
+.article-label:hover {
+  color: #e1e4e8;
+}
+
+.article-title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.article-date {
+  font-size: 14px;
+  color: #adb5bd;
+  margin-bottom: 10px;
+}
+
+p,
+.article-excerpt {
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: #555;
+  max-width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.articles-container {
+  color: #007bff;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.article-item {
+  flex: 1 1 calc(50% - 20px);
+  height: 150px;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 20px;
+  border: none;
+  border-radius: 25px;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  background: #ffffff;
+}
+
+.article-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+}
+
+.category-icon {
+  align-items: center;
+  flex-direction: column;
+  display: block;
+  margin-top: 0.5em;
+}
+
+.article-item.Technology {
+  background-color: #1f4b7a;
+}
+
+.article-item.Politics {
+  background-color: #1f4b7a;
+}
+
+.article-item.Sports {
+  background-color: #1f4b7a;
+}
+
+.article-item.News {
+  background-color: #1f4b7a;
+}
+
+.hidden-checkbox {
+  display: none;
+}
+
+.styled-checkbox {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: #e4e4e4;
+  border-radius: 50%;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-right: 10px;
+  border: 2px solid #dee2e6;
+  transition:
+    background-color 0.3s,
+    border-color 0.3s;
+}
+
+.styled-checkbox:after {
+  content: "";
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #3498db;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+}
+
+.hidden-checkbox:checked + .styled-checkbox {
+  background: #3498db;
+  border-color: #3498db;
+}
+
+.hidden-checkbox:checked + .styled-checkbox:after {
+  display: block;
+  visibility: hidden;
+}
+
+@media (max-width: 768px) {
+  .article-item {
+    flex-basis: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+/* Add this new class for the form */
+.form-container {
+  font-family: Poppins;
+  max-width: 600px; /* Set a max-width for larger screens */
+  margin: 0 auto; /* Center the form */
+  padding: 20px; /* Add padding around the form */
+  border-radius: 15px; /* Rounded edges for the form */
+  background-color: #f8f9fa; /* Light background for the form */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* Adjust styles for input[type="url"] */
+input[type="url"] {
+  width: 100%; /* Full width of its parent */
+  padding: 15px; /* More padding for larger touch area */
+  margin-bottom: 10px; /* Margin at the bottom */
+  border-radius: 10px; /* Rounded edges for the input */
+  border: 1px solid #ced4da; /* Subtle border */
+  font-size: 16px; /* Larger font size */
+  box-sizing: border-box; /* Include padding and border in the element's width and height */
+}
