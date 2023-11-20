@@ -1,5 +1,5 @@
 .article-label {
-  color: #a8d8e5;
+  color: #00D4FF; /* Vibrant Cyan for article labels */
   margin-left: 10px;
   cursor: pointer;
   transition: color 0.3s ease;
@@ -8,7 +8,7 @@
 }
 
 .article-label:hover {
-  color: #e1e4e8;
+  color: #FAA916; /* Accent Orange for hover */
 }
 
 .article-title {
@@ -16,11 +16,12 @@
   font-weight: 600;
   font-size: 18px;
   margin-bottom: 8px;
+  color: #383838; /* Neutral Gray for article titles */
 }
 
 .article-date {
   font-size: 14px;
-  color: #adb5bd;
+  color: #ADB5BD; /* Lighter Gray for article date */
   margin-bottom: 10px;
 }
 
@@ -28,7 +29,7 @@ p,
 .article-excerpt {
   margin-bottom: 24px;
   font-size: 14px;
-  color: #555;
+  color: #555; /* Darker gray for body text */
   max-width: 80%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -36,7 +37,7 @@ p,
 }
 
 .articles-container {
-  color: #007bff;
+  color: #0D3B66; /* Primary Blue for container text */
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -54,9 +55,9 @@ p,
   border: none;
   border-radius: 25px;
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  background: #ffffff;
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+  background: #E1E4E8; /* Light Gray for article items */
 }
 
 .article-item:hover {
@@ -71,20 +72,9 @@ p,
   margin-top: 0.5em;
 }
 
-.article-item.Technology {
-  background-color: #1f4b7a;
-}
-
-.article-item.Politics {
-  background-color: #1f4b7a;
-}
-
-.article-item.Sports {
-  background-color: #1f4b7a;
-}
-
-.article-item.News {
-  background-color: #1f4b7a;
+/* Removed the redundant category colors as they were all the same and replaced with one generic class */
+.article-item-category {
+  background-color: #0D3B66; /* Primary Blue for category background */
 }
 
 .hidden-checkbox {
@@ -95,15 +85,15 @@ p,
   display: inline-block;
   width: 24px;
   height: 24px;
-  background: #e4e4e4;
+  background: #E1E4E8; /* Light Gray for checkbox background */
   border-radius: 50%;
   cursor: pointer;
   vertical-align: middle;
   margin-right: 10px;
-  border: 2px solid #dee2e6;
+  border: 2px solid #ADB5BD; /* Lighter Gray for checkbox border */
   transition:
-    background-color 0.3s,
-    border-color 0.3s;
+          background-color 0.3s,
+          border-color 0.3s;
 }
 
 .styled-checkbox:after {
@@ -113,15 +103,15 @@ p,
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #3498db;
+  background-color: #FAA916; /* Accent Orange for checkbox 'after' */
   border-radius: 50%;
   width: 16px;
   height: 16px;
 }
 
 .hidden-checkbox:checked + .styled-checkbox {
-  background: #3498db;
-  border-color: #3498db;
+  background: #FAA916; /* Accent Orange for checked state */
+  border-color: #FAA916;
 }
 
 .hidden-checkbox:checked + .styled-checkbox:after {
@@ -156,4 +146,8 @@ input[type="url"] {
   border: 1px solid #ced4da; /* Subtle border */
   font-size: 16px; /* Larger font size */
   box-sizing: border-box; /* Include padding and border in the element's width and height */
+}
+
+.card-header {
+  border: 1px solid #ced4da; /* Subtle border */
 }

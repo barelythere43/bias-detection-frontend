@@ -4,6 +4,7 @@ import zoomPlugin from "chartjs-plugin-zoom";
 import Annotation from "chartjs-plugin-annotation";
 import { Scatter } from "react-chartjs-2";
 import PlaceIcon from "@mui/icons-material/Place";
+import InfinitiveBackground from "./infinitive_background_image.png";
 
 import {
   Chart as ChartJS,
@@ -28,51 +29,58 @@ ChartJS.register(
 
 function GraphPage({ selectedArticles, setPage }) {
   const [articlePoints, setArticlePoints] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const articleColors = ["#FF6384", "#36eb60", "#FFCE56", "#f3aafd", "#9966FF"];
 
   useEffect(() => {
     if (selectedArticles.length) {
       fetchSelectedArticles();
+    } else {
+      setArticlePoints([]);
     }
   }, [selectedArticles]);
 
-  const fetchArticleData = async (title) => {
+  const fetchArticleData = async (articleUrlList) => {
     try {
-      const encodedTitle = encodeURIComponent(title.replace(/%/g, "%25"));
-      const response = await fetch(
-        `http://localhost:3001/api/articles/${encodedTitle}`,
-      );
+      const response = await fetch('http://localhost:3001/api/databricks', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ urls: articleUrlList }) // Send the list of URLs in the request body
+      });
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       return response.json();
     } catch (error) {
-      console.error(`Failed to fetch article: ${title}`, error);
-      return null; // or use a fallback value
+      console.error(`Failed to fetch article data`, error);
+      return null;
     }
   };
 
-  const fetchSelectedArticles = async () => {
-    try {
-      console.log(selectedArticles);
-      const requests = selectedArticles.map((title) => fetchArticleData(title));
-      const articlesResults = await Promise.allSettled(requests);
-      const articlesData = articlesResults
-        .filter((result) => result.status === "fulfilled" && result.value)
-        .map((result) => result.value);
+  function handleBackToArticleSelection() {
+    setPage(1);
+  }
 
-      const points = articlesData.map((article) => ({
+
+  const fetchSelectedArticles = async () => {
+    setIsLoading(true);
+    try {
+      const response = await fetchArticleData(selectedArticles)
+
+      const points = Object.entries(response.predictions).map(([title, article]) => ({
         x: article.sentiment_score,
         y: article.subjectivity_score,
-        label: `Title: ${article.title}\nPolarity: ${article.sentiment_score}\nSubjectivity: ${article.subjectivity_score}\nCategory: ${article.category}\nSource: ${article.source}`,
+        label: `Title: ${title}\nPolarity: ${article.sentiment_score}\nSubjectivity: ${article.subjectivity_score}\nSource: ${article.source}`,
       }));
 
       setArticlePoints(points);
     } catch (error) {
       console.error("Error fetching selected articles", error);
-      // Handle or propagate the error as needed
     }
+    setIsLoading(false);
   };
 
   const graphData = {
@@ -171,21 +179,6 @@ function GraphPage({ selectedArticles, setPage }) {
           },
         },
       },
-      zoom: {
-        pan: {
-          enabled: true,
-          mode: "xy",
-        },
-        zoom: {
-          wheel: {
-            enabled: true,
-          },
-          pinch: {
-            enabled: true,
-          },
-          mode: "xy",
-        },
-      },
       annotation: {
         annotations: {
           verticalLine: {
@@ -198,16 +191,6 @@ function GraphPage({ selectedArticles, setPage }) {
             xMin: 0,
             xMax: 0,
           },
-          // horizontalLine: {
-          //   type: "line",
-          //   xMin: -1,
-          //   xMax: 1,
-          //   borderColor: "#ffffff",
-          //   borderWidth: 3,
-          //   borderDash: [10, 5],
-          //   yMin: 0.5,
-          //   yMax: 0.5,
-          // },
           shadedArea: {
             type: "box",
             yMin: -0.333,
@@ -226,17 +209,22 @@ function GraphPage({ selectedArticles, setPage }) {
   };
 
   return (
-    <div className="card">
       <div>
-        <h2>Article Subjectivity and Polarity</h2>
+        {!isLoading ? ( <h2>Article Subjectivity and Polarity</h2>
+            ) : null }
         <div className="graph-container">
-          <Scatter data={graphData} options={graphOptions} />
+          {isLoading ? (
+              <h2>Loading Inferences...</h2>
+          ) : (
+              <>
+                <Scatter data={graphData} options={graphOptions} />
+              </>
+          )}
         </div>
-        <button className="modern-button" onClick={() => setPage(1)}>
+        <button className="modern-button" onClick={handleBackToArticleSelection}>
           Back to Article Selection
         </button>
       </div>
-    </div>
   );
 }
 

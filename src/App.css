@@ -31,12 +31,11 @@
 body,
 html {
   height: 100%;
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #383838;
-  background-image: linear-gradient(45deg, #020024, #090979, #00d4ff, #ff2b2b);
-  background-size: 150% 150%;
+  background-image: linear-gradient(45deg, #020024, #0D3B66, #00D4FF, #FAA916);  background-size: 150% 150%;
   animation: gradientBackground 15s ease infinite;
   overflow-x: hidden;
 }
@@ -56,7 +55,7 @@ h1 {
   font-family: "Poppins", sans-serif;
   font-size: 3rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #FAA916;
   text-transform: uppercase;
   margin-bottom: 1rem;
   padding: 0.5rem 0;
@@ -115,12 +114,6 @@ button:hover {
   background-color: #5348c6;
 }
 
-.graph-container {
-  height: 50vh;
-  position: relative;
-  border: 1px solid #e1e4e8;
-}
-
 @media (max-width: 768px) {
   .container {
     width: 90%;
@@ -133,9 +126,9 @@ button:hover {
 }
 
 .modern-button {
-  background-color: #4caf50;
+  background-color: #0D3B66;
   border: none;
-  color: white;
+  color: #FFFFFF;
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
@@ -150,6 +143,7 @@ button:hover {
 
 .modern-button:hover {
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background-color: #00D4FF;
   transform: translateY(-2px);
 }
 
@@ -168,20 +162,28 @@ button:hover {
   height: 500px;
   width: 100%;
   border-radius: 20px;
+  box-sizing: border-box;
   padding: 30px;
   box-sizing: border-box;
-  border: none; /* Adjust this to a darker shade close to the background for subtle contrast */
+  background-color: #0D3B66;
+  border: none;
   box-shadow: 0 4px 6px rgba(44, 62, 80, 0.1);
   transition: transform 0.3s ease-in-out;
 }
 
 .graph-container:hover {
-  transform: scale(1.03); /* Slightly zooms in */
+  transform: scale(1.03);
   box-shadow:
     0 8px 16px 0 rgba(0, 0, 0, 0.2),
-    0 12px 40px 0 rgba(0, 0, 0, 0.2); /* Larger shadow for raised effect */
+    0 12px 40px 0 rgba(0, 0, 0, 0.2);
 }
 
 .graph-container + .modern-button {
-  margin-top: 40px; /* Increase the top margin */
+  margin-top: 40px;
 }
+
+.navbar-brand {
+  font-family: 'Poppins', sans-serif;
+}
+
+
